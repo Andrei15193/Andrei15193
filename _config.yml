@@ -1,0 +1,6 @@
+theme: jekyll-theme-leap-day
+title: "Andrei15193's blog"
+description: "Thoughts, ideas and whatnot"
+permalink: pretty
+paginate: 10
+paginate_path: "/page-:num/"

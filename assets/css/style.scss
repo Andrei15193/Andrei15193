@@ -1,0 +1,108 @@
+---
+---
+@import "{{ site.theme }}";
+
+#banner #logo {
+  padding: 3px;
+  background-position: center;
+  background-repeat: no-repeat;
+  top: 4px;
+
+  &:hover {
+    background-color: #f0b500;
+  }
+}
+
+.wrapper {
+  aside {
+    margin: 175px auto 5px;
+    padding: 0 10px;
+    width: 620px;
+
+    strong {
+      a {
+        font-weight: bold;
+      }
+    }
+  }
+
+  section {
+    margin: 0;
+    text-align: justify;
+
+    .margin-bottom-0 {
+      margin-bottom: 0;
+    }
+    
+    .gr_grid_container {
+      /* customize grid container div here. eg: width: 500px; */
+    }
+
+    .gr_grid_book_container {
+      /* customize book cover container div here */
+      float: left;
+      width: 39px;
+      height: 60px;
+      padding: 0px 0px;
+      overflow: hidden;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+
+    .image {
+      text-align: center;
+
+      .caption {
+        font-size: smaller;
+      }
+    }
+
+    .post-timestamp {
+      margin-bottom: 4px;
+      text-align: right;
+      font-size: smaller;
+      font-style: oblique;
+    }
+  }
+
+  @media print, screen and (max-width: 1060px) {
+    section {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  @media print, screen and (max-width: 720px) {
+    aside {
+      margin-top: 140px;
+    }
+
+    section {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  @media print, screen and (max-width: 640px) {
+    aside {
+      width: unset;
+    }
+  }
+
+  @media print, screen and (max-width: 480px) {
+    aside {
+      margin-top: 7px;
+      width: unset;
+    }
+
+    section {
+      padding: 10px;
+    }
+  }
+}

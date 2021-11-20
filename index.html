@@ -1,0 +1,57 @@
+---
+title: "Andrei15193's blog"
+layout: "default"
+---
+{% if paginator.page == 1 %}
+<p>
+  Hi, this is a place where I post thoughts, ideas and notes about different things, do not expect an open journal or anything like that although you
+  may grasp some of the way I think and perceive the world, but that happens with anyone exposing anything so long it is genuine.
+</p>
+<p>
+  I do hope you find useful information here, if you have questions or anything you will need to contact me as I don't want this to be a place for
+  dialogue, I want this to be a place where I share things, if you want to talk or comment reach out on one of the many social platforms.
+</p>
+
+<h2>Categories</h2>
+
+<ul>
+{% for category in site.categories %}
+{% assign isPrimaryCategory = false %}
+{% for post in category[1] %}
+{% if post.categories.first == category[0] %}
+{% assign isPrimaryCategory = true %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% if isPrimaryCategory %}
+  <li><a href="/{{ site.github.repository_name }}/{{ category[0] }}">{{ category[0] }}</a></li>
+{% endif %}
+{% endfor %}
+</ul>
+
+<h2>Recent Posts</h2>
+{% endif %}
+
+{% for post in paginator.posts %}
+{% unless forloop.first %}<hr>{% endunless %}
+<h3><a href="/{{ site.github.repository_name }}{{ post.url }}">{{ post.title }}</a></h3>
+{% unless post.hide_excerpt %}{{ post.excerpt }}{% endunless %}
+{% if post.categories.size >= 2 %}
+<p class="post-timestamp">Posted in <a href="/{{ site.github.repository_name }}/{{ post.categories[0] }}">{{ post.categories[0] }}</a> (<a href="/{{ site.github.repository_name }}/{{ post.categories[0] }}/{{ post.categories[1] }}">{{ post.categories[1] }}</a>), on {{ post.date | date: "%A, %-d %B %Y" }}</p>
+{% elsif post.categories.size >= 1 %}
+<p class="post-timestamp">Posted in <a href="/{{ site.github.repository_name }}/{{ post.categories[0] }}">{{ post.categories[0] }}</a>, on {{ post.date | date: "%A, %-d %B %Y" }}</p>
+{% else %}
+<p class="post-timestamp">Posted on {{ post.date | date: "%A, %-d %B %Y" }}</p>
+{% endif %}
+{% endfor %}
+
+{% if paginator.previous_page_path and paginator.next_page_path %}
+<hr>
+<div class="text-center"><a href="/{{ site.github.repository_name }}{{ paginator.previous_page_path }}">Newer posts</a> | <a href="/{{ site.github.repository_name }}{{ paginator.next_page_path }}">Older posts</a></div>
+{% elsif paginator.previous_page_path %}
+<hr>
+<div class="text-center"><a href="/{{ site.github.repository_name }}{{ paginator.previous_page_path }}">Newer posts</a></div>
+{% elsif paginator.next_page_path %}
+<hr>
+<div class="text-center"><a href="/{{ site.github.repository_name }}{{ paginator.next_page_path }}">Older posts</a></div>
+{% endif %}
