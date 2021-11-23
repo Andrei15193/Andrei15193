@@ -134,4 +134,4 @@ Be happy for the little things in life, things that you may see or could enjoy e
 
 - - - -
 
-These are my book notes for [12 Rules for Life: An Antidote to Chaos](https://www.goodreads.com/book/show/30257963-12-rules-for-life) by [Jordan B. Peterson](https://www.goodreads.com/author/show/282885.Jordan_B_Peterson)
+These are my book notes for [12 Rules for Life: An Antidote to Chaos](https://www.goodreads.com/book/show/30257963-12-rules-for-life) by [Jordan B. Peterson](https://www.goodreads.com/author/show/282885.Jordan_B_Peterson).
