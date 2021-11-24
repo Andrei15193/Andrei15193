@@ -1,5 +1,5 @@
 ---
-title:  "Beyond Order: 12 More Rules for Life"
+title:  'Beyond Order: 12 More Rules for Life'
 hide_excerpt: true
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Book Notes"
-permalink: "/Book Notes"
+title: Book Notes
+permalink: /Book Notes
 hide_title: true
 ---
 <div style="display: flex; flex-direction: column; margin-bottom: 20px;">
@@ -164,11 +164,11 @@ Books & Book Series Notes
 {% assign subcategories = '' %}
 {% for post in site.categories["Book Notes"] %}
 {% assign subcategory = post.categories[1] %}
-{% unless subcategories.size == 0 %}{% assign subcategories = subcategories | append: "^" %}{% endunless %}
+{% unless subcategories.size == 0 %}{% assign subcategories = subcategories | append: '^' %}{% endunless %}
 {% assign subcategories = subcategories | append: subcategory %}
 {% endfor %}
-{% assign subcategories = subcategories | split: "^" | uniq | sort %}
+{% assign subcategories = subcategories | split: '^' | uniq | sort %}
 
 {% for subcategory in subcategories %}
-* [{{ subcategory }}](/{{ site.github.repository_name }}{{ page.url }}/{{ subcategory }})
+* [{{ subcategory }}]({{ page.url | append: '/' | append: subcategory | relative_url }})
 {% endfor %}

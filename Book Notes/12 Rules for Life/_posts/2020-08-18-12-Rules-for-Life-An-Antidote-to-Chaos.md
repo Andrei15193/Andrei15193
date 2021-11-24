@@ -1,5 +1,5 @@
 ---
-title:  "12 Rules for Life: An Antidote to Chaos"
+title:  '12 Rules for Life: An Antidote to Chaos'
 hide_excerpt: true
 ---
 
