@@ -1,13 +1,12 @@
 ---
-title: 12 Rules for Life
-permalink: /Book Notes/12 Rules for Life
+title: Simon Sinek Books
+permalink: /Book Notes/Simon Sinek Books
 categories:
 - Book Notes
 ---
 
 <div class="image">
-  <img alt="12 Rules for Life Book Covers" src="{{ '/assets/images/12%20Rules%20for%20Life.png' | relative_url }}">
-  <div class="caption">Taken from Amazon.co.uk, <a target="_blank" href="https://www.amazon.co.uk/Beyond-Order-More-Rules-Life/dp/0241407621">Beyond Order: 12 More Rules for Life</a></div>
+  <img alt="Simon Sinek Books Covers" src="{{ '/assets/images/Simon%20Sinek%20Books.png' | relative_url }}">
 </div>
 
 Notes
