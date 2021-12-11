@@ -1,6 +1,6 @@
 ---
 title:  '12 Rules for Life: An Antidote to Chaos'
-hide_excerpt: true
+excerpt: Joran B. Peterson presents a set of 12 Rules for Life, although there is likely that we need more than that, these focus on the critical elements of life covering from life philosophies to biological mechanisms that are deeply rooted within us. What I wrote here are key take-aways for myself, this book is worth reading and taking notes for yourself.
 ---
 ### _#1: "Stand up straight with your shoulders back"_
 

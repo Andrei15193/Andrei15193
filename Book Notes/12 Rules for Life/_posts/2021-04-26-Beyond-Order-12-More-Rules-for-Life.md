@@ -1,6 +1,6 @@
 ---
 title:  'Beyond Order: 12 More Rules for Life'
-hide_excerpt: true
+excerpt: 'This is a continuation from the previous book, 12 Rules for Life: An Antidote to Chaos, following up with another set of 12 rules. Same as before, these are key take-aways for myself and this is definitely a book that should be read, in my humble opinion, and take notes from. There is a lot that is covered and what is written applies and resonates differently to different people.'
 ---
 ### _#1: "Do not carelessly denigrate social institutions or creative achievement"_
 
