@@ -162,7 +162,7 @@ hide_title: true
 Books & Book Series Notes
 -------------------------
 {% assign subcategories = '' %}
-{% for post in site.categories["Book Notes"] %}
+{% for post in site.categories[page.title] %}
 {% assign subcategory = post.categories[1] %}
 {% unless subcategories.size == 0 %}{% assign subcategories = subcategories | append: '^' %}{% endunless %}
 {% assign subcategories = subcategories | append: subcategory %}
