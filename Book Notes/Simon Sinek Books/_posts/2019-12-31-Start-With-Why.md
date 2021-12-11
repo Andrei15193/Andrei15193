@@ -1,6 +1,6 @@
 ---
 title: Start With Why
-excerpt: Start With Why written by Simon Sinek is a book that focuses on motivation and leadership, mostly about having a drive that can sustain a company long-term rather than chasing short-term goals that pay-off in the moment, but sacrifice the future. The book covers a lot of areas, most of which can be applied to every day life, it does not apply only to organizations.
+excerpt: '<p>Start With Why written by Simon Sinek is a book that focuses on motivation and leadership, mostly about having a drive that can sustain a company long-term rather than chasing short-term goals that pay-off in the moment, but sacrifice the future. The book covers a lot of areas, most of which can be applied to every day life, it does not apply only to organizations.</p>'
 ---
 ### Manipulators, Short-Term Gain Over Long-Term Consistency
 
