@@ -1,6 +1,6 @@
 ---
 title: Code Kata Pool Party
-excerpt: As with any profession, training makes mastery, repetition is learning and challenges bring new levels of understanding. This is also applicable to software development and compared to most other professions, it is probably one of the easiest to develop. Anyone with a laptop and WiFi can write code and publish an app from absolutely anywhere, can we say the same about doctors, musicians or athletes? It is more difficult for them than it is for us, yet they practice.
+excerpt: '<p>As with any profession, training makes mastery, repetition is learning and challenges bring new levels of understanding. This is also applicable to software development and compared to most other professions, it is probably one of the easiest to develop. Anyone with a laptop and WiFi can write code and publish an app from absolutely anywhere, can we say the same about doctors, musicians or athletes? It is more difficult for them than it is for us, yet they practice.</p>'
 ---
 
 > To improve yourself is to challenge yourself.
