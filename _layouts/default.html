@@ -1,5 +1,47 @@
 <!doctype html>
 <html lang="{{ site.lang | default: 'en-GB' }}">
+{% assign table_of_contents = '' | split: '' | where: 'an', 'array' %}
+{% assign previous_lowest_header_element_name = '' %}
+{% assign lowest_header_element_name = '' %}
+
+{% assign page_elements = content | split: 'id=' %}
+{% for index in (2..page_elements.size) %}
+  {% assign before_id_split_index = index | minus: 2 %}
+  {% assign before_id_split = page_elements[before_id_split_index] %}
+
+  {% assign after_id_split_index = index | minus: 1 %}
+  {% assign after_id_split = page_elements[after_id_split_index] %}
+
+  {% assign element_name = before_id_split | split: '<' | last | newline_to_br | replace: '<br>', ' ' | split: ' ' | first | downcase %}
+  {% unless element_name == 'h1' or element_name == 'h2' or element_name == 'h3' or element_name == 'h4' or element_name == 'h5' or element_name == 'h6' %}
+    {% continue %}
+  {% endunless %}
+
+  {% assign id_separator = after_id_split | strip | slice: 0 %}
+  {% assign element_id = after_id_split | split: id_separator | slice: 1, 1 | first %}
+
+  {% for slice_length in (1..after_id_split.size) %}
+    {% assign slice = after_id_split | slice: 1, slice_length %}
+    {% assign element_name_size = element_name.size %}
+    {% assign slice_offset = element_name_size | times: -1 %}
+    {% assign slice_ending = slice | slice: slice_offset, element_name_size | downcase %}
+
+    {% if slice_ending == element_name %}
+      {% assign element_text_content = '<' | append: element_name | append: ' id=' | append: slice | append: '>' | strip_html | strip %}
+      {% if element_text_content.size > 0 %}
+        {% assign entry = '' | split: '' | where: 'an', 'array' | push: element_name | push: element_id | push: element_text_content %}
+        {% assign table_of_contents = table_of_contents | push: entry %}
+
+        {% if lowest_header_element_name < element_name %}
+          {% assign previous_lowest_header_element_name = lowest_header_element_name %}
+          {% assign lowest_header_element_name = element_name %}
+        {% endif %}
+
+      {% endif %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
 
 <head>
   <meta charset="utf-8">
@@ -51,39 +93,16 @@
     <aside>
       <nav>
         <ul>
-          {% unless page.hide_title %}
-          <li><a href="#top">{{ page.title }}</a></li>
-          {% endunless %}
-
-          {% assign page_elements = content | split: 'id=' %}
-          {% for index in (2..page_elements.size) %}
-            {% assign before_id_split_index = index | minus: 2 %}
-            {% assign before_id_split = page_elements[before_id_split_index] %}
-
-            {% assign after_id_split_index = index | minus: 1 %}
-            {% assign after_id_split = page_elements[after_id_split_index] %}
-
-            {% assign element_name = before_id_split | split: '<' | last | newline_to_br | replace: '<br>', ' ' | split: ' ' | first %}
-
-            {% assign id_separator = after_id_split | strip | slice: 0 %}
-            {% assign element_id = after_id_split | split: id_separator | slice: 1, 1 | first %}
-
-            {% for slice_length in (1..after_id_split.size) %}
-              {% assign slice = after_id_split | slice: 1, slice_length %}
-              {% assign element_name_size = element_name.size %}
-              {% assign slice_offset = element_name_size | times: -1 %}
-              {% assign slice_ending = slice | slice: slice_offset, element_name_size %}
-
-              {% if slice_ending == element_name %}
-                {% assign element_text_content = '<' | append: element_name | append: ' id=' | append: slice | append: '>' | strip_html | strip %}
-                {% if element_text_content.size > 0 %}
-                  <li>
-                    <a href="#{{ element_id }}">{{ element_text_content }}</a>
-                  </li>
-                {% endif %}
-                {% break %}
+          <li><strong><a href="#top">{{ page.title }}</a></strong></li>
+          {% for entry in table_of_contents %}
+            {% capture link %}<a href="#{{ entry[1] }}">{{ entry[2] }}</a>{% endcapture %}
+            <li>
+              {% if entry[0] == lowest_header_element_name and previous_lowest_header_element_name != '' %}
+                <small>{{ link }}</small>
+              {% else %}
+                {{ link }}
               {% endif %}
-            {% endfor %}
+            </li>
           {% endfor %}
         </ul>
       </nav>
