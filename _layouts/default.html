@@ -1,59 +1,93 @@
 <!doctype html>
 <html lang="{{ site.lang | default: 'en-GB' }}">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   {% seo %}
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-  <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-  <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
-    <![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   {% include head-custom.html %}
 </head>
+
 <body>
   <header>
     <h1>{{ site.title | default: site.github.repository_name }}</h1>
     <p>{{ site.description | default: site.github.project_tagline }}</p>
   </header>
-  <div class="banner-container">
-    <div class="banner">
-      <div><a href="{{ '' | relative_url }}" class="button"><strong>Home</strong></a></div>
-      <a class="github" target="_blank" href="{{ site.github.owner_url }}"></a>
-    </div>
-  </div>
   <aside>
+    <nav>
+      <div><a href="{{ '' | relative_url | url_escape }}" class="button"><strong>Home</strong></a></div>
+      <a class="github" target="_blank" href="{{ site.github.owner_url }}"></a>
+    </nav>
+  </aside>
+  <nav>
     {% assign is_home_page = false %}
     {% if page.path == 'index.html' %}
-    {% assign is_home_page = true %}
+      {% assign is_home_page = true %}
     {% else %}
-    {% assign page_path_parts = page.path | split: '/' %}
-    {% assign first_parts = page_path_parts | first | split: '-' %}
-    {% if page_path_parts.size == 2 and first_parts.first == 'page' and page_path_parts.last == 'index.html' %}
-    {% assign is_home_page = true %}
-    {% endif %}
+      {% assign page_path_parts = page.path | split: '/' %}
+      {% assign first_parts = page_path_parts | first | split: '-' %}
+      {% if page_path_parts.size == 2 and first_parts.first == 'page' and page_path_parts.last == 'index.html' %}
+        {% assign is_home_page = true %}
+      {% endif %}
     {% endif %}
 
     {% if is_home_page %}
-    <strong><a href="{{ '' | relative_url }}">Home</a></strong>
+      <strong><a href="{{ '' | relative_url | url_escape }}">Home</a></strong>
     {% else %}
-    <a href="{{ '' | relative_url }}">Home</a>
+      <a href="{{ '' | relative_url | url_escape }}">Home</a>
     {% endif %}
     {% assign category_url = '' | relative_url %}
     {% for category in page.categories %}
-    {% assign category_url = category_url | append: '/' | append: category %}
-    / <a href="{{ category_url }}">{{ category }}</a>
+      {% assign category_url = category_url | append: '/' | append: category %}
+      / <a href="{{ category_url | url_escape }}">{{ category }}</a>
     {% endfor %}
     {% unless is_home_page %}
-    / <strong><a href="{{ page.url | relative_url }}">{{ page.title }}</a></strong>
+      / <strong><a href="{{ page.url | relative_url | url_escape }}">{{ page.title }}</a></strong>
     {% endunless %}
-  </aside>
-  <section>
-    <nav>
-      <ul></ul>
-    </nav>
+  </nav>
+  <main>
+    <aside>
+      <nav>
+        <ul>
+          {% unless page.hide_title %}
+          <li><a href="#top">{{ page.title }}</a></li>
+          {% endunless %}
+
+          {% assign page_elements = content | split: 'id=' %}
+          {% for index in (2..page_elements.size) %}
+            {% assign before_id_split_index = index | minus: 2 %}
+            {% assign before_id_split = page_elements[before_id_split_index] %}
+
+            {% assign after_id_split_index = index | minus: 1 %}
+            {% assign after_id_split = page_elements[after_id_split_index] %}
+
+            {% assign element_name = before_id_split | split: '<' | last | newline_to_br | replace: '<br>', ' ' | split: ' ' | first %}
+
+            {% assign id_separator = after_id_split | strip | slice: 0 %}
+            {% assign element_id = after_id_split | split: id_separator | slice: 1, 1 | first %}
+
+            {% for slice_length in (1..after_id_split.size) %}
+              {% assign slice = after_id_split | slice: 1, slice_length %}
+              {% assign element_name_size = element_name.size %}
+              {% assign slice_offset = element_name_size | times: -1 %}
+              {% assign slice_ending = slice | slice: slice_offset, element_name_size %}
+
+              {% if slice_ending == element_name %}
+                {% assign element_text_content = '<' | append: element_name | append: ' id=' | append: slice | append: '>' | strip_html | strip %}
+                {% if element_text_content.size > 0 %}
+                  <li>
+                    <a href="#{{ element_id }}">{{ element_text_content }}</a>
+                  </li>
+                {% endif %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
     <article>
       {% unless page.hide_title %}
       <h2>{{ page.title }}</h2>
@@ -63,12 +97,13 @@
       {% endif %}
       {{ content }}
     </article>
-  </section>
+  </main>
   <footer>
     <p><small>
         {% if site.github.is_project_page %}<a target="_blank" href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>'s blog<br>{% endif %}
         Hosted on <a target="_blank" href="https://pages.github.com/">GitHub Pages</a> &mdash; Theme by <a target="_blank" href="https://twitter.com/mattgraham">mattgraham</a>
-    </small></p>
+      </small></p>
   </footer>
 </body>
+
 </html>

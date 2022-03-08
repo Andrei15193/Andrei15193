@@ -1,0 +1,10 @@
+livereload: true
+open_url: true
+baseurl: ''
+plugins:
+- jekyll-paginate
+defaults:
+- scope:
+    path: ''
+  values:
+    layout: default
