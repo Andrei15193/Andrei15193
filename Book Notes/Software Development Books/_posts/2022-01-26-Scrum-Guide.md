@@ -1,5 +1,5 @@
 ---
-title: Scum Guide
+title: Scrum Guide
 excerpt: '<p>The Scrum Guide is a short book available for free as an e-book. It provides and describes the Scrum framework with all the mandatory elements.</p>'
 ---
 The Scrum Guide describes the Scrum process and framework and how it applies to software development. It contains the base minimum of what must be done and, sort of, how in order to follow this methodology. Scum is the process in which developers implement increments of value from work defined by a product owner, and it all happens inside a sprint.
