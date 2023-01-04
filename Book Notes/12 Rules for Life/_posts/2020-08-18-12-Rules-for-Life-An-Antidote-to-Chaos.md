@@ -47,7 +47,7 @@ This is a bitter truth to accept, it's not pleasant. However, it does come with 
 ### _#4: "Compare yourself to who you were yesterday, not to who someone else is today"_
 
 > When you have something to say, silence is a lie.  
-> _\- [Jordan B. Peterson] (https://www.goodreads.com/author/show/282885.Jordan_B_Peterson)_
+> _\- [Jordan B. Peterson](https://www.goodreads.com/author/show/282885.Jordan_B_Peterson)_
 
 > What you aim at determines what you see.  
 > _\- [Jordan B. Peterson](https://www.goodreads.com/author/show/282885.Jordan_B_Peterson)_
